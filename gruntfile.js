@@ -8,7 +8,8 @@ module.exports = function(grunt) {
 		clientViews: ['public/modules/**/views/**/*.html'],
 		clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
 		clientCSS: ['public/modules/**/*.css'],
-		mochaTests: ['app/tests/**/*.js']
+		mochaTests: ['app/tests/**/*.js'],
+    sass: 'public/style/{,*/}*.{scss,sass}'
 	};
 
 	// Project Configuration
@@ -47,7 +48,14 @@ module.exports = function(grunt) {
 				options: {
 					livereload: true
 				}
-			}
+			},
+      sass: {
+        files: watchFiles.sass,
+        tasks: ['sass:dev'],
+        options: {
+          livereload: true
+        }
+      }
 		},
 		jshint: {
 			all: {
@@ -72,13 +80,6 @@ module.exports = function(grunt) {
 				},
 				files: {
 					'public/dist/application.min.js': 'public/dist/application.js'
-				}
-			}
-		},
-		cssmin: {
-			combine: {
-				files: {
-					'public/dist/application.min.css': '<%= applicationCSSFiles %>'
 				}
 			}
 		},
@@ -135,7 +136,26 @@ module.exports = function(grunt) {
 			unit: {
 				configFile: 'karma.conf.js'
 			}
-		}
+		},
+    sass: {
+      dev: {
+        files: {
+          'public/style/style.css': 'public/style/{,*/}*.{scss,sass}'
+          //next line is not necessary if you include your bootstrap into the *.scss files
+          //'public/css/bootstrap.css': 'public/lib/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss'
+        }
+      },
+      dist: {
+        //you could use this as part of the build job (instead of using cssmin)
+        options: {
+          style: 'compressed',
+          compass: false
+        },
+        files: {
+          'public/dist/application.min.css': 'public/style/{,*/}*.{scss,sass}'
+        }
+      }
+    }
 	});
 
 	// Load NPM tasks 
@@ -154,7 +174,7 @@ module.exports = function(grunt) {
 	});
 
 	// Default task(s).
-	grunt.registerTask('default', ['lint', 'concurrent:default']);
+	grunt.registerTask('default', ['lint', 'sass:dev', 'concurrent:default']);
 
 	// Debug task.
 	grunt.registerTask('debug', ['lint', 'concurrent:debug']);
@@ -163,7 +183,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('lint', ['jshint', 'csslint']);
 
 	// Build task(s).
-	grunt.registerTask('build', ['lint', 'loadConfig', 'ngmin', 'uglify', 'cssmin']);
+	grunt.registerTask('build', ['lint', 'loadConfig', 'ngmin', 'uglify', 'sass:dist']);
 
 	// Test task.
 	grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);

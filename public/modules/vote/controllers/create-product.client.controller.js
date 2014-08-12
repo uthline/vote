@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('vote').controller('VoteController', ['$scope', '$stateParams', '$location', 'Authentication',
+angular.module('vote').controller('createProductController', ['$scope', '$stateParams', '$location', 'Authentication',
   function($scope, $stateParams, $location, Authentication, Articles) {
     $scope.authentication = Authentication;
 
