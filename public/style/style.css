@@ -5319,3 +5319,80 @@ button.close {
   top: 10px;
   right: 10px;
   position: absolute; }
+
+#create-product {
+  /* for IE*/ }
+  #create-product .upload-buttons input[type="file"] {
+    width: 6.3em \0/IE9;
+    height: 1.5em;
+    margin: 5px; }
+  #create-product .upload-buttons input[multiple] {
+    width: 6.2em \0/IE9; }
+  #create-product .upload-button {
+    width: 160px;
+    Height: 30px;
+    display: inline-block;
+    line-height: 30px;
+    padding: 0 10px;
+    background: #CCC;
+    appearance: button;
+    -moz-appearance: button;
+    /* Firefox */
+    -webkit-appearance: button;
+    /* Safari and Chrome */ }
+  #create-product .sel-file {
+    padding: 1px 5px;
+    font-size: smaller;
+    color: grey; }
+  #create-product .response {
+    padding-top: 30px; }
+  #create-product .response > ul {
+    list-style-type: decimal; }
+  #create-product .response li, #create-product .response .reqh {
+    color: blue;
+    font-size: smaller;
+    padding-bottom: 5px; }
+  #create-product .progress {
+    display: inline-block;
+    width: 100px;
+    border: 3px groove #CCC; }
+  #create-product .progress div {
+    font-size: smaller;
+    background: orange;
+    width: 0; }
+  #create-product .drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    width: 200px;
+    height: 65px;
+    text-align: center;
+    padding-top: 35px; }
+  #create-product .drop-box.dragover {
+    border: 5px dashed blue; }
+  #create-product .drop-box.dragover-err {
+    border: 5px dashed red; }
+  #create-product .js-fileapi-wrapper {
+    display: inline-block;
+    vertical-align: middle; }
+  #create-product button {
+    padding: 1px 5px;
+    font-size: smaller;
+    margin: 0 3px; }
+  #create-product .ng-v {
+    float: right; }
+  #create-product .sel-file img {
+    float: left;
+    width: 18px;
+    height: 18px; }
+  #create-product .sub {
+    font-size: smaller;
+    color: #777;
+    padding-top: 5px;
+    padding-left: 10px; }
+  #create-product .err {
+    font-size: 12px;
+    color: #C53F00;
+    margin: 15px;
+    padding: 15px;
+    background-color: #F0F0F0;
+    border: 1px solid black; }

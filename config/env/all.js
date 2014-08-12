@@ -15,6 +15,7 @@ module.exports = {
 			css: [
 			],
 			js: [
+        'public/lib/ng-file-upload/angular-file-upload-shim.min.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-cookies/angular-cookies.js', 
@@ -24,7 +25,8 @@ module.exports = {
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-        'public/lib/socket.io-client/socket.io.js'
+        'public/lib/socket.io-client/socket.io.js',
+        'public/lib/ng-file-upload/angular-file-upload.min.js'
 			]
 		},
 		css: [
