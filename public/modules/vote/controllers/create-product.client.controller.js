@@ -50,24 +50,29 @@ angular.module('vote').controller('createProductController', ['$scope', '$stateP
           }(fileReader, i);
         }
         $scope.progress[i] = -1;
-        if ($scope.uploadRightAway) {
-          $scope.start(i);
-        }
+        $scope.start(i);
       }
     };
 
+
+
+    $scope.imageUploads = [];
+    $scope.abort = function(index) {
+      $scope.upload[index].abort();
+      $scope.upload[index] = null;
+    };
+
     $scope.start = function(index) {
-      $scope.progress[index] = 0;
       $scope.errorMsg = null;
 
       (function (file, i) {
         $http.get('/api/s3Policy?mimeType='+ file.type).success(function(response) {
           var s3Params = response;
           $scope.upload[i] = $upload.upload({
-            url: 'https://product.vote.s3.amazonaws.com/',
+            url: 'http://vote.products.s3.amazonaws.com/',
             method: 'POST',
             data: {
-              'key' : 's3UploadExample/'+ Math.round(Math.random()*10000) + '$$' + file.name,
+              'key' : 'images/' + Math.round(Math.random()*10000) + '$$' + file.name,
               'acl' : 'public-read',
               'Content-Type' : file.type,
               'AWSAccessKeyId': s3Params.AWSAccessKeyId,
@@ -79,8 +84,8 @@ angular.module('vote').controller('createProductController', ['$scope', '$stateP
           });
           $scope.upload[i]
             .then(function(response) {
-              file.progress = parseInt(100);
               if (response.status === 201) {
+                console.log('response', response);
                 var data = xml2json.parser(response.data),
                   parsedData;
                 parsedData = {
@@ -95,7 +100,6 @@ angular.module('vote').controller('createProductController', ['$scope', '$stateP
                 alert('Upload Failed');
               }
             }, null, function(evt) {
-              file.progress =  parseInt(100.0 * evt.loaded / evt.total);
             });
         });
       }($scope.selectedFiles[index], index));

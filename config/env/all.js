@@ -26,7 +26,8 @@ module.exports = {
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
         'public/lib/socket.io-client/socket.io.js',
-        'public/lib/ng-file-upload/angular-file-upload.min.js'
+        'public/lib/ng-file-upload/angular-file-upload.min.js',
+        'public/lib/xml2json/xml2json.js'
 			]
 		},
 		css: [
