@@ -1,5 +1,13 @@
 #create-product {
 
+  .upload-div {
+    position: relative;
+   & > div {
+     display: inline-block;
+     vertical-align: bottom;
+   }
+  }
+
   .upload-buttons input[type="file"] {
     width: 6.3em \0/IE9;
     height: 1.5em;
@@ -58,13 +66,13 @@
     background: #F8F8F8;
     border: 5px dashed #DDD;
     width: 200px;
-    height: 65px;
+    height: 170px;
     text-align: center;
     padding-top: 35px;
   }
 
   .drop-box.dragover {
-    border: 5px dashed blue;
+    border: 5px dashed #000;
   }
 
   .drop-box.dragover-err {
@@ -108,5 +116,63 @@
     background-color: #F0F0F0;
     border: 1px solid black;
   }
+
+
+  input, textarea {
+    border-radius: 5px;
+  }
+
+
+  .upload-buttons {
+    input.upload-link {
+      margin-top: 30px;
+    }
+  }
+
+  .preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    img {
+      width: 175px;
+      height: 175px;
+    }
+    span {
+      display: block;
+    }
+  }
+
+  .info {
+    .name {
+      label {
+        display: block;
+      }
+      input {
+        width: 250px;
+      }
+    }
+    .description {
+      label {
+        display: block;
+      }
+      textarea {
+        width: 250px;
+        height: 100px;
+      }
+    }
+
+  }
+
+  .macros {
+    .fat, .protein, .carbs {
+      margin: 10px 0;
+    }
+
+    input {
+      width: 100px;
+      line-height: 28px;
+    }
+  }
+
 
 }

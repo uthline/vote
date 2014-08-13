@@ -3,26 +3,49 @@
     <h2>Create a Product</h2>
     <div class="upload-div">
       <div class="upload-buttons">
-        choose a single file: <input type="file" ng-file-select="onFileSelect($files)" onclick="this.value=null" accept="image/*">
-        <br/>
+        <div ng-show="dropSupported" class="drop-box" ng-file-drop="onFileSelect($files)" ng-file-drop-available="dropSupported=true"
+             ng-file-drag-over-class="dragOverClass($event)" ng-file-drag-over-delay="100">or drop files <div>here</div></div>
+        <div ng-show="!dropSupported">HTML5 Drop File is not supported on this browser</div>
+        <input class="upload-link" type="file" ng-file-select="onFileSelect($files)" onclick="this.value=null" accept="image/*">
       </div>
-      <br/>
       <!-- ng-file-drag-over-class and ng-file-drag-over-delay are optional for styling and css transition handling #277 -->
-      <div ng-show="dropSupported" class="drop-box" ng-file-drop="onFileSelect($files)" ng-file-drop-available="dropSupported=true"
-           ng-file-drag-over-class="dragOverClass($event)" ng-file-drag-over-delay="100">or drop files <div>here</div></div>
-      <div ng-show="!dropSupported">HTML5 Drop File is not supported on this browser</div>
-      <br/>
+
       <div class="err" ng-show="errorMsg != null">{{errorMsg}}</div>
-      <br/>
-      Progress:
-      <br/>
-      <br/>
-      <div ng-show="selectedFiles != null">
+      <div ng-show="selectedFiles != null" class="preview">
         <div class="sel-file" ng-repeat="f in selectedFiles">
-          {{($index + 1) + '.'}}
           <img ng-show="dataUrls[$index]" ng-src="{{dataUrls[$index]}}">
-          {{f.name}} - size: {{f.size}}B - type: {{f.type}}
+          <span>{{f.name}} - size: {{f.size}}B - type: {{f.type}}</span>
         </div>
+      </div>
+
+      <div class="info">
+        <div class="name">
+          <label>Name: </label>
+          <input type="text"/>
+        </div>
+        <div class="description">
+          <label>Description: </label>
+          <textarea></textarea>
+        </div>
+      </div>
+
+      <div class="macros">
+        <form>
+          <h6>label</h6>
+          <div class="fat">
+            <label>F: </label>
+            <input type="text" required/>
+          </div>
+          <div class="protein">
+            <label>P: </label>
+            <input type="text" required/>
+          </div>
+          <div class="carbs">
+            <label>C: </label>
+            <input type="text" required/>
+          </div>
+          <button ng-click="submitProduct()" ng-disabled="form.$invalid">Submit</button>
+        </form>
       </div>
 
 

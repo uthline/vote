@@ -5322,6 +5322,11 @@ button.close {
 
 #create-product {
   /* for IE*/ }
+  #create-product .upload-div {
+    position: relative; }
+    #create-product .upload-div > div {
+      display: inline-block;
+      vertical-align: bottom; }
   #create-product .upload-buttons input[type="file"] {
     width: 6.3em \0/IE9;
     height: 1.5em;
@@ -5364,11 +5369,11 @@ button.close {
     background: #F8F8F8;
     border: 5px dashed #DDD;
     width: 200px;
-    height: 65px;
+    height: 170px;
     text-align: center;
     padding-top: 35px; }
   #create-product .drop-box.dragover {
-    border: 5px dashed blue; }
+    border: 5px dashed #000; }
   #create-product .drop-box.dragover-err {
     border: 5px dashed red; }
   #create-product .js-fileapi-wrapper {
@@ -5396,3 +5401,30 @@ button.close {
     padding: 15px;
     background-color: #F0F0F0;
     border: 1px solid black; }
+  #create-product input, #create-product textarea {
+    border-radius: 5px; }
+  #create-product .upload-buttons input.upload-link {
+    margin-top: 30px; }
+  #create-product .preview {
+    position: absolute;
+    top: 0;
+    left: 0; }
+    #create-product .preview img {
+      width: 175px;
+      height: 175px; }
+    #create-product .preview span {
+      display: block; }
+  #create-product .info .name label {
+    display: block; }
+  #create-product .info .name input {
+    width: 250px; }
+  #create-product .info .description label {
+    display: block; }
+  #create-product .info .description textarea {
+    width: 250px;
+    height: 100px; }
+  #create-product .macros .fat, #create-product .macros .protein, #create-product .macros .carbs {
+    margin: 10px 0; }
+  #create-product .macros input {
+    width: 100px;
+    line-height: 28px; }
