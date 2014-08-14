@@ -8,6 +8,11 @@ var ProductSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  image: {
+    type: String,
+    default: '',
+    trim: true
+  },
   macros: {
     fat: {
       type: Number,
@@ -30,6 +35,16 @@ var ProductSchema = new Schema({
     default: '',
     trim: true,
     required: 'Name cannot be blank'
+  },
+  votes: {
+    up: {
+      type: Number,
+      min: 0
+    },
+    down: {
+      type: Number,
+      min: 0
+    }
   },
   user: {
     type: Schema.ObjectId,

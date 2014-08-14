@@ -18,36 +18,38 @@
         </div>
       </div>
 
-      <div class="info">
-        <div class="name">
-          <label>Name: </label>
-          <input type="text"/>
-        </div>
-        <div class="description">
-          <label>Description: </label>
-          <textarea></textarea>
-        </div>
-      </div>
 
-      <div class="macros">
-        <form>
-          <h6>label</h6>
-          <div class="fat">
-            <label>F: </label>
-            <input type="text" required/>
-          </div>
-          <div class="protein">
-            <label>P: </label>
-            <input type="text" required/>
-          </div>
-          <div class="carbs">
-            <label>C: </label>
-            <input type="text" required/>
-          </div>
-          <button ng-click="submitProduct()" ng-disabled="form.$invalid">Submit</button>
-        </form>
-      </div>
+      <form>
 
+        <div class="info">
+          <div class="name">
+            <label>Name: </label>
+            <input type="text"/>
+          </div>
+          <div class="description">
+            <label>Description: </label>
+            <textarea></textarea>
+          </div>
+        </div>
+
+        <div class="macros">
+            <h6>label</h6>
+            <div class="fat">
+              <label>F: </label>
+              <input type="text" required/>
+            </div>
+            <div class="protein">
+              <label>P: </label>
+              <input type="text" required/>
+            </div>
+            <div class="carbs">
+              <label>C: </label>
+              <input type="text" required/>
+            </div>
+            <button ng-click="submitProduct()" ng-disabled="form.$invalid">Submit</button>
+        </div>
+
+      </form>
 
     </div>
   </div>

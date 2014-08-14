@@ -2,10 +2,6 @@
 
   .upload-div {
     position: relative;
-   & > div {
-     display: inline-block;
-     vertical-align: bottom;
-   }
   }
 
   .upload-buttons input[type="file"] {
@@ -118,37 +114,59 @@
   }
 
 
-  input, textarea {
+
+
+
+
+
+  input {
     border-radius: 5px;
+    line-height: 28px;
+  }
+  textarea {
+    border-radius: 5px;
+    border: 1px solid #999;
   }
 
 
+
+
   .upload-buttons {
+    float: left;
     input.upload-link {
       margin-top: 30px;
     }
   }
 
   .preview {
+    display: inline-block;
+    vertical-align: bottom;
     position: absolute;
     top: 0;
     left: 0;
     img {
+      position: relative;
+      display: block;
       width: 175px;
       height: 175px;
     }
     span {
+      position: relative;
+      clear: both;
       display: block;
     }
   }
 
   .info {
+    display: inline-block;
+    vertical-align: bottom;
     .name {
       label {
         display: block;
       }
       input {
         width: 250px;
+        border: 1px solid #999;
       }
     }
     .description {
@@ -164,13 +182,15 @@
   }
 
   .macros {
+    display: inline-block;
+    vertical-align: bottom;
     .fat, .protein, .carbs {
       margin: 10px 0;
     }
 
     input {
       width: 100px;
-      line-height: 28px;
+      border: 1px solid #999;
     }
   }
 

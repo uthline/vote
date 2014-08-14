@@ -5324,9 +5324,6 @@ button.close {
   /* for IE*/ }
   #create-product .upload-div {
     position: relative; }
-    #create-product .upload-div > div {
-      display: inline-block;
-      vertical-align: bottom; }
   #create-product .upload-buttons input[type="file"] {
     width: 6.3em \0/IE9;
     height: 1.5em;
@@ -5401,30 +5398,49 @@ button.close {
     padding: 15px;
     background-color: #F0F0F0;
     border: 1px solid black; }
-  #create-product input, #create-product textarea {
-    border-radius: 5px; }
-  #create-product .upload-buttons input.upload-link {
-    margin-top: 30px; }
+  #create-product input {
+    border-radius: 5px;
+    line-height: 28px; }
+  #create-product textarea {
+    border-radius: 5px;
+    border: 1px solid #999; }
+  #create-product .upload-buttons {
+    float: left; }
+    #create-product .upload-buttons input.upload-link {
+      margin-top: 30px; }
   #create-product .preview {
+    display: inline-block;
+    vertical-align: bottom;
     position: absolute;
     top: 0;
     left: 0; }
     #create-product .preview img {
+      position: relative;
+      display: block;
       width: 175px;
       height: 175px; }
     #create-product .preview span {
+      position: relative;
+      clear: both;
       display: block; }
-  #create-product .info .name label {
-    display: block; }
-  #create-product .info .name input {
-    width: 250px; }
-  #create-product .info .description label {
-    display: block; }
-  #create-product .info .description textarea {
-    width: 250px;
-    height: 100px; }
-  #create-product .macros .fat, #create-product .macros .protein, #create-product .macros .carbs {
-    margin: 10px 0; }
-  #create-product .macros input {
-    width: 100px;
-    line-height: 28px; }
+  #create-product .info {
+    display: inline-block;
+    vertical-align: bottom; }
+    #create-product .info .name label {
+      display: block; }
+    #create-product .info .name input {
+      width: 250px;
+      border: 1px solid #999; }
+    #create-product .info .description label {
+      display: block; }
+    #create-product .info .description textarea {
+      width: 250px;
+      height: 100px; }
+  #create-product .macros {
+    display: inline-block;
+    vertical-align: bottom; }
+    #create-product .macros .fat, #create-product .macros .protein, #create-product .macros .carbs {
+      margin: 10px 0; }
+    #create-product .macros input {
+      width: 100px;
+      border: 1px solid #999; }

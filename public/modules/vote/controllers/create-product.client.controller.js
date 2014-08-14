@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('vote').controller('createProductController', ['$scope', '$stateParams', '$location', '$upload', '$timeout', '$http', 'Authentication',
-  function($scope, $stateParams, $location, $upload, $timeout, $http, Authentication) {
+angular.module('vote').controller('createProductController', ['$scope', '$stateParams', '$location', '$upload', '$timeout', '$http', 'Authentication', 'Products',
+  function($scope, $stateParams, $location, $upload, $timeout, $http, Authentication, Products) {
     $scope.authentication = Authentication;
 
     $scope.usingFlash = FileAPI && FileAPI.upload != null;
@@ -85,6 +85,18 @@ angular.module('vote').controller('createProductController', ['$scope', '$stateP
                 };
                 $scope.imageUploads.push(parsedData);
 
+                var product = new Products({
+                  image: data.postresponse.location,
+                  macros: {fat:1, protein:2, carbs:3},
+                  name: 'test',
+                  votes: {up:0, down:0}
+                });
+                product.$save(function(response) {
+                  console.log('saved response', response);
+                }, function(errorResponse) {
+                  $scope.error = errorResponse.data.message;
+                });
+
               } else {
                 alert('Upload Failed');
               }
@@ -112,6 +124,7 @@ angular.module('vote').controller('createProductController', ['$scope', '$stateP
 
     $scope.submitProduct = function() {
       $scope.start(0);
+
     }
 
   }
