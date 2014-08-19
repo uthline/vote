@@ -24,11 +24,11 @@
         <div class="info">
           <div class="name">
             <label>Name: </label>
-            <input type="text"/>
+            <input type="text" ng-model="product.name"/>
           </div>
           <div class="description">
             <label>Description: </label>
-            <textarea></textarea>
+            <textarea ng-model="product.description"></textarea>
           </div>
         </div>
 
@@ -36,15 +36,15 @@
             <h6>label</h6>
             <div class="fat">
               <label>F: </label>
-              <input type="text" required/>
+              <input type="text" ng-model="product.macros.fat" required/>
             </div>
             <div class="protein">
               <label>P: </label>
-              <input type="text" required/>
+              <input type="text" ng-model="product.macros.protein" required/>
             </div>
             <div class="carbs">
               <label>C: </label>
-              <input type="text" required/>
+              <input type="text" ng-model="product.macros.carbs" required/>
             </div>
             <button ng-click="submitProduct()" ng-disabled="form.$invalid">Submit</button>
         </div>

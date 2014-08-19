@@ -48,8 +48,23 @@ angular.module('vote').controller('createProductController', ['$scope', '$stateP
     };
 
 
-
     $scope.imageUploads = [];
+
+    // New product
+    $scope.product = {
+      image: '',
+      name: '',
+      description: '',
+      macros: {
+        fat: 0,
+        protein: 0,
+        carbs: 0
+      },
+      votes: {
+        up: 0,
+        down: 0
+      }
+    };
 
     $scope.start = function(index) {
       $scope.errorMsg = null;
@@ -74,23 +89,16 @@ angular.module('vote').controller('createProductController', ['$scope', '$stateP
           $scope.upload[i]
             .then(function(response) {
               if (response.status === 201) {
-                console.log('response', response);
                 var data = xml2json.parser(response.data),
-                  parsedData;
-                parsedData = {
-                  location: data.postresponse.location,
-                  bucket: data.postresponse.bucket,
-                  key: data.postresponse.key,
-                  etag: data.postresponse.etag
-                };
+                  parsedData = {
+                    location: data.postresponse.location,
+                    bucket: data.postresponse.bucket,
+                    key: data.postresponse.key,
+                    etag: data.postresponse.etag
+                  };
                 $scope.imageUploads.push(parsedData);
-
-                var product = new Products({
-                  image: data.postresponse.location,
-                  macros: {fat:1, protein:2, carbs:3},
-                  name: 'test',
-                  votes: {up:0, down:0}
-                });
+                $scope.product.image = data.postresponse.location;
+                var product = new Products($scope.product);
                 product.$save(function(response) {
                   console.log('saved response', response);
                 }, function(errorResponse) {
@@ -106,25 +114,11 @@ angular.module('vote').controller('createProductController', ['$scope', '$stateP
       }($scope.selectedFiles[index], index));
     };
 
-    $scope.dragOverClass = function($event) {
-      var items = $event.dataTransfer.items;
-      var hasFile = false;
-      if (items != null) {
-        for (var i = 0 ; i < items.length; i++) {
-          if (items[i].kind == 'file') {
-            hasFile = true;
-            break;
-          }
-        }
-      } else {
-        hasFile = true;
-      }
-      return hasFile ? "dragover" : "dragover-err";
-    };
-
     $scope.submitProduct = function() {
-      $scope.start(0);
-
+      if (selectedFiles !== null) {
+        $scope.start(0);
+      }
+      $scope.selectedFiles = null;
     }
 
   }

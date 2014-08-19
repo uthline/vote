@@ -33,9 +33,7 @@ exports.create = function(req, res) {
     }
   });
 
-  console.log('here');
   Product.findById(req.body.product, function(err, product) {
-    console.log('FOUND PRODUCT', product);
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -47,13 +45,10 @@ exports.create = function(req, res) {
     else
       product.voteCount.down++;
 
-    console.log('product after addition', product);
     product.save(function(err) {
-      console.log('error', err);
       if (err) {
         return err;
       }
-      console.log('emit', product._id);
       io.emit(product._id, product.voteCount);
     });
 
