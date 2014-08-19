@@ -1,0 +1,6 @@
+<section data-ng-controller="listProductsController" data-ng-init="initProducts()">
+  <div id="list-products">
+    <h2>Products</h2>
+    <product ng-repeat="product in products" class="product" model="product"></product>
+  </div>
+</section>

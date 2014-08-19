@@ -23,22 +23,17 @@ var express = require('express'),
 module.exports = function(db) {
 	// Initialize express app
 	var app = express();
-  var server = require('http').createServer(app);
-  var io = require('socket.io').listen(server);
-
-  // Configure Socket.io connection
-  io.on('connection', function(socket) {
-    console.log('connected');
-
-    socket.on('message', function(message) {
-      io.sockets.emit('message', message);
-    });
-  });
 
 	// Globbing model files
 	config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
 		require(path.resolve(modelPath));
 	});
+
+  // Configure Socket.io connection
+  var server = require('http').createServer(app);
+  var io = require('socket.io').listen(server);
+  var productCtrl = require('../app/controllers/vote');
+  productCtrl.socket(io);
 
 	// Setting application local variables
 	app.locals.title = config.app.title;

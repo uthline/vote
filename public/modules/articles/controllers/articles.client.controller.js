@@ -55,7 +55,6 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 			});
 		};
 
-    var socket = io();
-    console.log('socket', socket);
+
 	}
 ]);

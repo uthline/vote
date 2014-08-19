@@ -36,19 +36,18 @@ var ProductSchema = new Schema({
     trim: true,
     required: 'Name cannot be blank'
   },
-  votes: {
+  votes: [{ type: Schema.ObjectId, ref: 'Vote' }],
+  voteCount: {
     up: {
       type: Number,
-      min: 0
+      min: 0,
+      default: 0
     },
     down: {
       type: Number,
-      min: 0
+      min: 0,
+      default: 0
     }
-  },
-  user: {
-    type: Schema.ObjectId,
-    ref: 'User'
   }
 });
 

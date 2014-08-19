@@ -4,11 +4,11 @@ angular.module('vote').controller('createProductController', ['$scope', '$stateP
   function($scope, $stateParams, $location, $upload, $timeout, $http, Authentication, Products) {
     $scope.authentication = Authentication;
 
-    $scope.usingFlash = FileAPI && FileAPI.upload != null;
-    $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
+    $scope.usingFlash = FileAPI && FileAPI.upload !== null;
+    $scope.fileReaderSupported = window.FileReader !== null && (window.FileAPI === null || FileAPI.html5 !== false);
 
     $scope.hasUploader = function(index) {
-      return $scope.upload[index] != null;
+      return $scope.upload[index] !== null;
     };
     $scope.abort = function(index) {
       $scope.upload[index].abort();
@@ -22,7 +22,7 @@ angular.module('vote').controller('createProductController', ['$scope', '$stateP
       $scope.progress = [];
       if ($scope.upload && $scope.upload.length > 0) {
         for (var i = 0; i < $scope.upload.length; i++) {
-          if ($scope.upload[i] != null) {
+          if ($scope.upload[i] !== null) {
             $scope.upload[i].abort();
           }
         }
@@ -41,7 +41,7 @@ angular.module('vote').controller('createProductController', ['$scope', '$stateP
               $timeout(function() {
                 $scope.dataUrls[index] = e.target.result;
               });
-            }
+            };
           }(fileReader, i);
         }
       }

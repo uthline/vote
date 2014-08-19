@@ -11,7 +11,6 @@ var mongoose = require('mongoose'),
  */
 exports.create = function(req, res) {
   var product = new Product(req.body);
-  product.user = req.user;
 
   product.save(function(err) {
     if (err) {
@@ -28,7 +27,7 @@ exports.create = function(req, res) {
  * List of Products
  */
 exports.list = function(req, res) {
-  Product.find().sort('-created').populate('user', 'displayName').exec(function(err, products) {
+  Product.find().sort('-created').exec(function(err, products) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)

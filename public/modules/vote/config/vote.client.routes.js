@@ -7,7 +7,11 @@ angular.module('vote').config(['$stateProvider',
     $stateProvider.
       state('submit', {
         url: '/submit',
-        templateUrl: 'modules/vote/views/create-product.html'
+        templateUrl: 'modules/vote/views/create-products.html'
+      }).
+      state('listProducts', {
+        url: '/products',
+        templateUrl: 'modules/vote/views/list-products.html'
       });
   }
 ]);
