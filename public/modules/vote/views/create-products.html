@@ -11,13 +11,13 @@
       <!-- ng-file-drag-over-class and ng-file-drag-over-delay are optional for styling and css transition handling #277 -->
 
       <div class="err" ng-show="errorMsg != null">{{errorMsg}}</div>
+
       <div ng-show="selectedFiles != null" class="preview">
         <div class="sel-file" ng-repeat="f in selectedFiles">
           <img ng-show="dataUrls[$index]" ng-src="{{dataUrls[$index]}}">
           <span>{{f.name}} - size: {{f.size}}B - type: {{f.type}}</span>
         </div>
       </div>
-
 
       <form>
 

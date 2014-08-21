@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('vote').controller('listProductsController', ['$scope', '$stateParams', '$location', 'Products', 'Vote',
-  function($scope, $stateParams, $location, Products, Vote) {
+angular.module('vote').controller('listProductsController', ['$scope', '$stateParams', '$location', 'Products', 'Authentication',
+  function($scope, $stateParams, $location, Products, Authentication) {
 
+    $scope.user = Authentication.user;
     $scope.products = [];
 
     $scope.initProducts = function() {
@@ -11,8 +12,6 @@ angular.module('vote').controller('listProductsController', ['$scope', '$statePa
         console.log($scope.products);
       });
     }
-
-
 
   }
 ]);

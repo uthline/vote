@@ -115,7 +115,7 @@ angular.module('vote').controller('createProductController', ['$scope', '$stateP
     };
 
     $scope.submitProduct = function() {
-      if (selectedFiles !== null) {
+      if ($scope.selectedFiles !== null) {
         $scope.start(0);
       }
       $scope.selectedFiles = null;

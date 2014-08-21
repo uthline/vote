@@ -201,13 +201,18 @@
 
 #list-products {
 
-  .vote-btns {
+  .product {
+    .vote-btns {
+      font-size: 17px;
+      &.up .glyphicon-thumbs-up, &.down .glyphicon-thumbs-down {
+        opacity: 1;
+      }
+      .glyphicon {
+        opacity: .5;
+        font-size: 30px;
+      }
 
-    .glyphicon {
-      width: 15px;
-      height: 15px;
     }
-
   }
 
 }

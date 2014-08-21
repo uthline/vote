@@ -30,11 +30,26 @@ var ProductSchema = new Schema({
       max: 1000
     }
   },
+  brand: {
+    type: String,
+    default: '',
+    trim: true
+  },
   name: {
     type: String,
     default: '',
     trim: true,
     required: 'Name cannot be blank'
+  },
+  category: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  link: {
+    type: String,
+    default: '',
+    trim: true
   },
   votes: [{ type: Schema.ObjectId, ref: 'Vote' }],
   voteCount: {

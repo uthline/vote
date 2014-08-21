@@ -17,8 +17,8 @@ angular.module('vote').factory('Products', ['$resource',
 // Votes service used for communicating with the vote REST endpoints
 angular.module('vote').factory('Vote', ['$resource',
   function($resource) {
-    return $resource('vote/:productId', {
-      productId: '@_id'
+    return $resource('vote/:voteId', {
+      voteId: '@_id'
     }, {
       update: {
         method: 'PUT'

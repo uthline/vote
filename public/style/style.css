@@ -5445,6 +5445,10 @@ button.close {
       width: 100px;
       border: 1px solid #999; }
 
-#list-products .vote-btns .glyphicon {
-  width: 15px;
-  height: 15px; }
+#list-products .product .vote-btns {
+  font-size: 17px; }
+  #list-products .product .vote-btns.up .glyphicon-thumbs-up, #list-products .product .vote-btns.down .glyphicon-thumbs-down {
+    opacity: 1; }
+  #list-products .product .vote-btns .glyphicon {
+    opacity: .5;
+    font-size: 30px; }
