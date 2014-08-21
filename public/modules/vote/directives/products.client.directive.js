@@ -43,8 +43,7 @@ angular.module('vote').directive('product', ['Vote', '_', function(Vote, _) {
 
       scope.updateVote = function(increase) {
         if (scope.vote) {
-          scope.found.$delete({}, function(err) {
-            console.log('error', err);
+          scope.found.$delete({}, function(vote) {
             if (scope.found && (increase != scope.found.positive)) {
               scope.createVote(increase);
               scope.vote = '';
@@ -61,7 +60,6 @@ angular.module('vote').directive('product', ['Vote', '_', function(Vote, _) {
       scope.loadVotes();
       var socket = io();
       socket.on(scope.model._id, function(msg){
-        console.log('message', msg);
         scope.model.voteCount = msg;
         scope.$apply();
       });
