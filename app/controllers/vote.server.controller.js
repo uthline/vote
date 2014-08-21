@@ -50,7 +50,7 @@ exports.create = function(req, res) {
       if (err) {
         return err;
       }
-      console.log('product created');
+      console.log('vote created');
       io.emit(product._id, product.voteCount);
     });
 
@@ -76,7 +76,7 @@ exports.delete = function(req, res) {
             message: errorHandler.getErrorMessage(err)
           });
         }
-
+        console.log('delete : ' + vote);
         if (vote.positive)
           product.voteCount.up--;
         else
@@ -86,7 +86,7 @@ exports.delete = function(req, res) {
           if (err) {
             return err;
           }
-          console.log('product created');
+          console.log('vote deleted, product: ', product);
           io.emit(product._id, product.voteCount);
         });
       });

@@ -14,15 +14,13 @@ angular.module('vote').directive('product', ['Vote', '_', function(Vote, _) {
       scope.loadVotes = function() {
         Vote.query({user: scope.user._id}, function(votes) {
           _.some(votes, function(vote) {
-            if (vote.product === scope.model._id) {
-              console.log('product vote found!');
+            if ((vote.product === scope.model._id) && (vote.user._id === scope.user._id)) {
               scope.found = vote;
               return true;
             }
           });
           if ( scope.found ) {
             // Vote already exists for this product by this user
-            console.log('found', scope.found);
             if (scope.found.positive) {
               scope.vote = 'up';
             } else {
@@ -32,29 +30,38 @@ angular.module('vote').directive('product', ['Vote', '_', function(Vote, _) {
         });
       }
 
+      scope.createVote = function(increase) {
+        var newVote = new Vote({
+          positive: increase,
+          product: scope.model._id
+        });
+        newVote.$save(function(response) {
+        }, function(errorResponse) {
+          scope.error = errorResponse.data.message;
+        });
+      };
+
       scope.updateVote = function(increase) {
         if (scope.vote) {
           scope.found.$delete({}, function(err) {
             console.log('error', err);
+            if (scope.found && (increase != scope.found.positive)) {
+              scope.createVote(increase);
+              scope.vote = '';
+              scope.found = false;
+              scope.loadVotes();
+            }
           });
-          scope.vote = '';
-          scope.found = false;
         } else {
-          var newVote = new Vote({
-            positive: increase,
-            product: scope.model._id
-          });
-          newVote.$save(function(response) {
-          }, function(errorResponse) {
-            scope.error = errorResponse.data.message;
-          });
+          scope.createVote(increase);
+          scope.loadVotes();
         }
-        scope.loadVotes();
       };
 
       scope.loadVotes();
       var socket = io();
       socket.on(scope.model._id, function(msg){
+        console.log('message', msg);
         scope.model.voteCount = msg;
         scope.$apply();
       });
